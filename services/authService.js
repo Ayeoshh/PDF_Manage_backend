@@ -131,9 +131,9 @@ class AuthServices{
         }
     }
     //reset password token and new password and compare authentication and update for the user
-    static async updatePassword(userId, oldPassword, newPassword){
+    static async updatePassword(email, oldPassword, newPassword){
         try{
-            const user = await User.findByPk(userId);
+            const user = await User.findOne({ where: { email } });
             if(!user){
                 throw new Error('User not found');
             }

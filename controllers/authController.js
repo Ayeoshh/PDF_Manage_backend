@@ -67,9 +67,9 @@ class AuthController {
 
     static async updatePassword(req, res) {
         try {
-            const {userId, oldPassword, newPassword } = req.body;  // fix here how to work with frontend
+            const {email, oldPassword, newPassword } = req.body;  // fix here how to work with frontend
             // const userId = req.user.id;
-            const response = await AuthService.updatePassword(userId, oldPassword, newPassword);
+            const response = await AuthService.updatePassword(email, oldPassword, newPassword);
             res.status(200).json(response);
         } catch (error) {
             res.status(400).json({ error: error.message });
