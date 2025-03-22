@@ -35,11 +35,31 @@ class AuthController {
         }
     }
 
+    // static async resetPassword(req, res) {
+    //     try {
+    //         const { email } = req.body;
+    //         const response = await AuthService.resetPassword(email);
+    //         res.status(200).json(response);
+    //     } catch (error) {
+    //         res.status(400).json({ error: error.message });
+    //     }
+    // }
+
     static async resetPassword(req, res) {
         try {
             const { email } = req.body;
             const response = await AuthService.resetPassword(email);
-            res.status(200).json(response);
+            res.json(response);
+        } catch (error) {
+            res.status(400).json({ error: error.message });
+        }
+    }
+
+    static async updateResetPassword(req, res) {
+        try {
+            const { token, newPassword } = req.body;
+            const response = await AuthService.updateResetPassword(token, newPassword);
+            res.json(response);
         } catch (error) {
             res.status(400).json({ error: error.message });
         }

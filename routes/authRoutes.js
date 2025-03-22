@@ -10,6 +10,7 @@ router.post("/register", validateSchema(registerSchema), authController.register
 router.post("/login", authController.login);
 router.post("/logout", authController.logout);
 router.post("/reset-password", authController.resetPassword);
+router.post('/update-reset-password', authController.updateResetPassword);
 router.post("/update-password", authController.updatePassword);
 
 module.exports = router;
